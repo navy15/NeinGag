@@ -1,0 +1,36 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+home:
+    path: /home
+    defaults: { _controller: AppBundle:Home:getHome, _format: html }
+    requirements:
+    methods:  [GET, POST]
+
+add:
+    path: /add
+    defaults: { _controller: AppBundle:Post:addPost, _format: html }
+    requirements:
+        method: POST
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+onePost:
+    path:     /post/{idPost}
+    defaults: { _controller: AppBundle:OnePost:addComment, _format: html }
+    requirements:
+        method: POST
+
+post_like:
+    path:     /post/like/{idPost}
+    defaults: { _controller: AppBundle:OnePost:addLike, _format: html }
+    requirements:
+        method: POST
+
+post_unlike:
+    path:     /post/unlike/{idPost}
+    defaults: { _controller: AppBundle:OnePost:addUnlike, _format: html }
+    requirements:
+        method: POST

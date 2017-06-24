@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+{{ form_start(form) }}
+    {{ form_row(form.login) }}
+    {{ form_row(form.plainPassword.first) }}
+
+    <button type="submit">Login</button>
+{{ form_end(form) }}
+{% endblock %}

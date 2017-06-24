@@ -1,0 +1,32 @@
+AppBundle\Entity\Post:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\PostRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        user:
+          targetEntity: User
+          joinColumn:
+            name: user_id
+            referencedColumnName: id
+    oneToMany:
+        comment:
+          targetEntity: Comment
+          mappedBy: post
+        vote:
+          targetEntity: Vote
+          mappedBy: post
+    fields:
+        image:
+            type: string
+            length: 255
+        title:
+            type: string
+            length: 255
+
+    lifecycleCallbacks: {  }

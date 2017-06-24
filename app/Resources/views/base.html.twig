@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}NeinGaG!{% endblock %}</title>
+        {% block stylesheets %}
+            {% stylesheets 'css/*' filter='cssrewrite' %}
+                <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
+        {% javascripts 'js/*' %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+        {% block navbar %}
+        <div id="wrapper" class="active">
+                <div id="sidebar-wrapper">
+                    <li><a href="/home">{{app.user}}</a></li>
+                    <ul id="sidebar_menu" class="sidebar-nav">
+                       <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a></li>
+                    </ul>
+                    <ul class="sidebar-nav" id="sidebar">
+                      <li><a href="/home">Accueil <span class="sub_icon glyphicon glyphicon-home"></span></a></li>
+                      <li><a href="add">Ajout <span class="sub_icon glyphicon glyphicon-plus"></span></a></li>
+                      <ul class="sidebar-nav" id="sidebar">
+                        <li><a href="register">S'enregistrer <span class="sub_icon glyphicon glyphicon-user"></span></a></li>
+                        <li><a href="login">Se connecter <span class="sub_icon glyphicon glyphicon-ok-sign"></span></a></li>
+                        <li><a href="logout">Se déconnecter <span class="sub_icon glyphicon glyphicon-remove-sign"></span></a></li>
+                      </ul>
+                    </ul>
+              </div>
+        </div>
+        {% endblock %}
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+
+        <script>
+            $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("active");
+            });
+        </script>
+    </body>
+</html>

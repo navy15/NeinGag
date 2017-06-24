@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Posts</h1>
+<div class="container">
+	{% for post in posts %}
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2" style="max-height:550px; max-width:1200px; ">
+			<div class="card">
+				<div class="card-image" style="max-height:410px; max-width:1200px; " >
+					<a href="/post/{{post.id}}" id="ImageContainer">
+						<img class="img-responsive" src="uploads/images/{{post.image}}">
+					</a>
+				</div><!-- card image -->
+
+				<div class="card-content" style="max-height:139px; max-width:1200px;">
+					<span class="card-title">{{ post.title }}</span>
+					<button type="button" id="show" class="btn btn-custom pull-right" aria-label="Left Align">
+						<span class="glyphicon glyphicon-comment"></span>
+					</button>
+				</div><!-- card content -->
+
+				<div class="card-action">
+					<div class='row'>
+						<div class='col-md-6' style="color:green;">
+							<a  href="{{ path('post_like',{'idPost':post.id}) }}"></a>
+						</div>
+						<div class='col-md-6' style="color:red;">
+							<a  href="{{ path('post_unlike',{'idPost':post.id}) }}"></a>
+						</div>
+					</div>
+				</div><!-- card actions -->
+				<div class="card-reveal">
+					<span class="card-title">Commentaires</span> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+					{% for comment in post.comments %}
+					<div class="comment">
+						{#<h5>{{comment.user}}</h5>#}
+						<span>{{comment.text}}</span>
+						{#<p>{{comment.date}}</p>#}
+					</div>
+					{% endfor %}
+				</div><!-- card reveal -->
+			</div>
+		</div>
+	</div>
+	{%endfor%}
+</div>
+
+
+{% endblock %}

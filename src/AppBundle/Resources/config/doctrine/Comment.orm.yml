@@ -1,0 +1,31 @@
+AppBundle\Entity\Comment:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\CommentRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        user:
+          targetEntity: User
+          joinColumn:
+            name: id
+            referencedColumnName: id
+        post:
+          targetEntity: Post
+          inversedBy: comment
+          joinColumn:
+            name: id
+            referencedColumnName: id
+    fields:
+
+        text:
+            type: string
+            length: 255
+        date:
+            type: datetime
+
+    lifecycleCallbacks: {  }

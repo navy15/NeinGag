@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+{{ form_start(form) }}
+<div class="add-container">
+    <h1>Ajouter un post</h1><br>
+    <form>
+        {{ form_row(form.title, {'attr': {'class': 'inputC'}}) }}
+        {{ form_row(form.image, {'attr': {'class': 'inputC'}}) }}
+        {{form_rest(form)}}
+        <button class="add-submit" type="submit">Ajouter </button>
+    </form>
+</div>
+{{ form_end(form) }}
+{% endblock %}

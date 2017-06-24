@@ -1,0 +1,28 @@
+AppBundle\Entity\Vote:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\VoteRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        user:
+          targetEntity: User
+          joinColumn:
+            name: id
+            referencedColumnName: id
+        post:
+          targetEntity: Post
+          inversedBy: vote
+          joinColumn:
+            name: id
+            referencedColumnName: id
+
+    fields:
+        vote:
+            type: boolean
+
+    lifecycleCallbacks: {  }
