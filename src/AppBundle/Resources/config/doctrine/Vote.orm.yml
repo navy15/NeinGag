@@ -12,13 +12,13 @@ AppBundle\Entity\Vote:
         user:
           targetEntity: User
           joinColumn:
-            name: id
+            name: user_id
             referencedColumnName: id
         post:
           targetEntity: Post
           inversedBy: vote
           joinColumn:
-            name: id
+            name: post_id
             referencedColumnName: id
 
     fields:

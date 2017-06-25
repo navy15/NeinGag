@@ -4,7 +4,7 @@ app:
 
 home:
     path: /home
-    defaults: { _controller: AppBundle:Home:getHome, _format: html }
+    defaults: { _controller: AppBundle:Post:getHome, _format: html }
     requirements:
     methods:  [GET, POST]
 
@@ -19,18 +19,38 @@ fos_user:
 
 onePost:
     path:     /post/{idPost}
-    defaults: { _controller: AppBundle:OnePost:addComment, _format: html }
+    defaults: { _controller: AppBundle:Post:addComment, _format: html }
     requirements:
         method: POST
 
 post_like:
     path:     /post/like/{idPost}
-    defaults: { _controller: AppBundle:OnePost:addLike, _format: html }
+    defaults: { _controller: AppBundle:Post:addLike, _format: html }
     requirements:
         method: POST
 
 post_unlike:
     path:     /post/unlike/{idPost}
-    defaults: { _controller: AppBundle:OnePost:addUnlike, _format: html }
+    defaults: { _controller: AppBundle:Post:addUnlike, _format: html }
+    requirements:
+        method: POST
+
+
+getPostApi:
+    path:     /api/post/{idPost}
+    defaults: { _controller: AppBundle:Post:getPostApi, _format: html }
+    requirements:
+        method: GET
+
+
+getAllPostApi:
+    path:     /api/home
+    defaults: { _controller: AppBundle:Post:getAllPostApi, _format: html }
+    requirements:
+        method: GET
+
+addCommentApi:
+    path:     /api/post/{idPost}/addComment
+    defaults: { _controller: AppBundle:Post:addCommentApi, _format: html }
     requirements:
         method: POST
