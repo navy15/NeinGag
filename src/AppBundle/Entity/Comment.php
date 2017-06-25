@@ -8,14 +8,9 @@ namespace AppBundle\Entity;
 class Comment
 {
     /**
-     * @var int
+     * @var integer
      */
     private $id;
-
-    /**
-     * @var \stdClass
-     */
-    private $user;
 
     /**
      * @var string
@@ -28,45 +23,24 @@ class Comment
     private $date;
 
     /**
-     * @var \stdClass
+     * @var \AppBundle\Entity\User
+     */
+    private $user;
+
+    /**
+     * @var \AppBundle\Entity\Post
      */
     private $post;
-
-
 
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \stdClass $user
-     *
-     * @return Comment
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \stdClass
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 
     /**
@@ -117,17 +91,16 @@ class Comment
         return $this->date;
     }
 
-
     /**
      * Set user
      *
-     * @param \stdClass $post
+     * @param \AppBundle\Entity\User $user
      *
      * @return Comment
      */
-    public function setPost($post)
+    public function setUser(\AppBundle\Entity\User $user = null)
     {
-        $this->post = $post;
+        $this->user = $user;
 
         return $this;
     }
@@ -135,11 +108,34 @@ class Comment
     /**
      * Get user
      *
-     * @return \stdClass
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set post
+     *
+     * @param \AppBundle\Entity\Post $post
+     *
+     * @return Comment
+     */
+    public function setPost(\AppBundle\Entity\Post $post = null)
+    {
+        $this->post = $post;
+
+        return $this;
+    }
+
+    /**
+     * Get post
+     *
+     * @return \AppBundle\Entity\Post
      */
     public function getPost()
     {
         return $this->post;
     }
-
 }

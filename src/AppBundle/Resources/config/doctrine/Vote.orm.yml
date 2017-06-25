@@ -16,11 +16,10 @@ AppBundle\Entity\Vote:
             referencedColumnName: id
         post:
           targetEntity: Post
-          inversedBy: vote
+          inversedBy: votes
           joinColumn:
             name: post_id
             referencedColumnName: id
-
     fields:
         vote:
             type: boolean

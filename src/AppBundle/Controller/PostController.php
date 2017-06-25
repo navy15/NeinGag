@@ -107,20 +107,10 @@ class PostController extends Controller
             $comment->setUser($this->getUser());
             $comment->setPost($post);
 
-            $tabComments = $post->getComments();
-            if($tabComments == null){
-                $tabComments = [];
-            }
-            array_push($tabComments, $comment);
-            $post->setComments($tabComments);
-
-
-            // 4) save the User!
             $em = $this->getDoctrine()->getManager();
             $em->persist($comment);
             $em->flush();
         }
-
         return $this->render('default/onePost.html.twig', array(
             'form' => $form->createView(),
             'post' => $post,

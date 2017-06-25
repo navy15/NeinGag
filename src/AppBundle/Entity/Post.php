@@ -8,7 +8,7 @@ namespace AppBundle\Entity;
 class Post
 {
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -23,37 +23,43 @@ class Post
     private $title;
 
     /**
-     * @var \stdClass
-     */
-    private $user;
-
-    /**
-     * @var array
-     */
-    private $comments;
-
-    /**
-     * @var \array
-     */
-    private $vote;
-
-    /**
-     * @var \int
+     * @var integer
      */
     private $votePlus;
 
     /**
-     * @var \int
+     * @var integer
      */
     private $voteMoins;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $comments;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $votes;
 
+    /**
+     * @var \AppBundle\Entity\User
+     */
+    private $user;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->votes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -63,7 +69,7 @@ class Post
     /**
      * Set image
      *
-     * @param binary $image
+     * @param string $image
      *
      * @return Post
      */
@@ -77,7 +83,7 @@ class Post
     /**
      * Get image
      *
-     * @return binary
+     * @return string
      */
     public function getImage()
     {
@@ -109,86 +115,15 @@ class Post
     }
 
     /**
-     * Set user
-     *
-     * @param \stdClass $user
-     *
-     * @return Post
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \stdClass
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * Set comments
-     *
-     * @param array $comments
-     *
-     * @return Post
-     */
-    public function setComments($comments)
-    {
-        $this->comments = $comments;
-
-        return $this;
-    }
-
-    /**
-     * Get comments
-     *
-     * @return array
-     */
-    public function getComments()
-    {
-        return $this->comments;
-    }
-
-
-    /**
-     * Set user
-     *
-     * @param \array $vote
-     *
-     * @return Post
-     */
-    public function setVote($vote)
-    {
-        $this->vote = $vote;
-
-        return $this;
-    }
-
-    /**
-     * Get vote
-     *
-     * @return \array
-     */
-    public function getVote()
-    {
-        return $this->vote;
-    }
-
-    /**
      * Set votePlus
      *
+     * @param integer $votePlus
+     *
      * @return Post
      */
-    public function addVotePlus()
+    public function setVotePlus($votePlus)
     {
-        $this->votePlus +1;
+        $this->votePlus = $votePlus;
 
         return $this;
     }
@@ -196,7 +131,7 @@ class Post
     /**
      * Get votePlus
      *
-     * @return \int
+     * @return integer
      */
     public function getVotePlus()
     {
@@ -205,13 +140,14 @@ class Post
 
     /**
      * Set voteMoins
-
+     *
+     * @param integer $voteMoins
      *
      * @return Post
      */
-    public function addVoteMoins()
+    public function setVoteMoins($voteMoins)
     {
-        $this->voteMoins +=1;
+        $this->voteMoins = $voteMoins;
 
         return $this;
     }
@@ -219,25 +155,11 @@ class Post
     /**
      * Get voteMoins
      *
-     * @return \int
+     * @return integer
      */
     public function getVoteMoins()
     {
-        return $this->vote;
-    }
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $comment;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->comment = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->vote = new \Doctrine\Common\Collections\ArrayCollection();
+        return $this->voteMoins;
     }
 
     /**
@@ -249,7 +171,7 @@ class Post
      */
     public function addComment(\AppBundle\Entity\Comment $comment)
     {
-        $this->comment[] = $comment;
+        $this->comments[] = $comment;
 
         return $this;
     }
@@ -261,17 +183,17 @@ class Post
      */
     public function removeComment(\AppBundle\Entity\Comment $comment)
     {
-        $this->comment->removeElement($comment);
+        $this->comments->removeElement($comment);
     }
 
     /**
-     * Get comment
+     * Get comments
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getComment()
+    public function getComments()
     {
-        return $this->comment;
+        return $this->comments;
     }
 
     /**
@@ -283,7 +205,7 @@ class Post
      */
     public function addVote(\AppBundle\Entity\Vote $vote)
     {
-        $this->vote[] = $vote;
+        $this->votes[] = $vote;
 
         return $this;
     }
@@ -295,6 +217,42 @@ class Post
      */
     public function removeVote(\AppBundle\Entity\Vote $vote)
     {
-        $this->vote->removeElement($vote);
+        $this->votes->removeElement($vote);
     }
+
+    /**
+     * Get votes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getVotes()
+    {
+        return $this->votes;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Post
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
 }
+

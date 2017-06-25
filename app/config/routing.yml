@@ -25,13 +25,13 @@ onePost:
 
 post_like:
     path:     /post/like/{idPost}
-    defaults: { _controller: AppBundle:Post:addLike, _format: html }
+    defaults: { _controller: AppBundle:Vote:addLike, _format: html }
     requirements:
         method: POST
 
 post_unlike:
     path:     /post/unlike/{idPost}
-    defaults: { _controller: AppBundle:Post:addUnlike, _format: html }
+    defaults: { _controller: AppBundle:Vote:addDislike, _format: html }
     requirements:
         method: POST
 

@@ -18,7 +18,7 @@ class DefaultControllerTest extends WebTestCase
 
     }
 
-    public function testApiAllPost()
+    /*public function testApiAllPost()
     {
         $client = static::createClient();
         $crawler = $client->request('GET', '/api/home');
@@ -66,5 +66,5 @@ class DefaultControllerTest extends WebTestCase
 
 
 
-    }
+    }*/
 }

@@ -16,7 +16,7 @@ AppBundle\Entity\Comment:
             referencedColumnName: id
         post:
           targetEntity: Post
-          inversedBy: comment
+          inversedBy: comments
           joinColumn:
             name: post_id
             referencedColumnName: id

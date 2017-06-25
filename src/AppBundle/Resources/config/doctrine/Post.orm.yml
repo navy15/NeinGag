@@ -15,12 +15,18 @@ AppBundle\Entity\Post:
             name: user_id
             referencedColumnName: id
     oneToMany:
-        comment:
+        comments:
           targetEntity: Comment
           mappedBy: post
-        vote:
-          targetEntity: Vote
-          mappedBy: post
+          joinColumn :
+            name : comment_id
+            referencedColumnName : id
+        votes:
+           targetEntity: Vote
+           mappedBy: post
+           joinColumn:
+               name: vote_id
+               referencedColumnName: id
     fields:
         image:
             type: string
@@ -28,5 +34,9 @@ AppBundle\Entity\Post:
         title:
             type: string
             length: 255
+        votePlus :
+            type : integer
+        voteMoins :
+            type : integer
 
     lifecycleCallbacks: {  }

@@ -8,22 +8,22 @@ namespace AppBundle\Entity;
 class Vote
 {
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
     /**
-     * @var vote
+     * @var boolean
      */
     private $vote;
 
     /**
-     * @var \stdClass
+     * @var \AppBundle\Entity\User
      */
     private $user;
 
     /**
-     * @var \stdClass
+     * @var \AppBundle\Entity\Post
      */
     private $post;
 
@@ -31,7 +31,7 @@ class Vote
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -41,7 +41,7 @@ class Vote
     /**
      * Set vote
      *
-     * @param boolean $votePlus
+     * @param boolean $vote
      *
      * @return Vote
      */
@@ -62,15 +62,14 @@ class Vote
         return $this->vote;
     }
 
-
     /**
      * Set user
      *
-     * @param \stdClass $user
+     * @param \AppBundle\Entity\User $user
      *
      * @return Vote
      */
-    public function setUser($user)
+    public function setUser(\AppBundle\Entity\User $user = null)
     {
         $this->user = $user;
 
@@ -80,7 +79,7 @@ class Vote
     /**
      * Get user
      *
-     * @return \stdClass
+     * @return \AppBundle\Entity\User
      */
     public function getUser()
     {
@@ -90,11 +89,11 @@ class Vote
     /**
      * Set post
      *
-     * @param \stdClass $post
+     * @param \AppBundle\Entity\Post $post
      *
      * @return Vote
      */
-    public function setPost($post)
+    public function setPost(\AppBundle\Entity\Post $post = null)
     {
         $this->post = $post;
 
@@ -104,7 +103,7 @@ class Vote
     /**
      * Get post
      *
-     * @return \stdClass
+     * @return \AppBundle\Entity\Post
      */
     public function getPost()
     {
