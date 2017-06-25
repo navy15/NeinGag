@@ -15,6 +15,16 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 
 class CommentType extends AbstractType
 {
+
+
+    /**
+     *
+     * Construct the form for the comment Entity
+     *
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     *
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

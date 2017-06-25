@@ -16,6 +16,13 @@ use AppBundle\Entity\Vote;
 class PostController extends Controller
 {
 
+    /**
+     *
+     * Get All the post
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function getHomeAction(Request $request)
     {
         $posts = $this->getDoctrine()
@@ -28,6 +35,14 @@ class PostController extends Controller
         ));
     }
 
+
+    /**
+     *
+     * Action to add a post
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function addPostAction(Request $request)
     {
 		// 1) build the form
@@ -67,6 +82,14 @@ class PostController extends Controller
     }
 
 
+    /**
+     *
+     *Add a comment to the selected post
+     *
+     * @param $idPost
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function addCommentAction($idPost, Request $request)
     {
 
@@ -203,8 +226,6 @@ class PostController extends Controller
             ];
         }
 
-
-
         return new JsonResponse($thePost);
     }
 
@@ -250,6 +271,8 @@ class PostController extends Controller
 
         return new JsonResponse($thePost);
     }
+
+
 
 
 }

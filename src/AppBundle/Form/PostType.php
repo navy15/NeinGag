@@ -13,6 +13,15 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 
 class PostType extends AbstractType
 {
+
+    /**
+     *
+     * Construct the form for the Post Entity
+     *
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     *
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

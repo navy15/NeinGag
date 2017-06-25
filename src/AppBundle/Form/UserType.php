@@ -15,6 +15,15 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 
 class UserType extends AbstractType
 {
+
+    /**
+     *
+     * Construct the form for the User Entity
+     *
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     *
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

@@ -14,7 +14,14 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class LoginController extends Controller
 {
-
+    /**
+     *
+     * Action for registration
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     *      The form for registration
+     */
     public function registerAction(Request $request)
     {
         // 1) build the form
