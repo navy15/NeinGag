@@ -117,62 +117,6 @@ class PostController extends Controller
         ));
     }
 
-    public function addLikeAction($idPost, Request $request){
-        $post = $this->getDoctrine()
-            ->getRepository('AppBundle:Post')
-            ->findOneById($idPost);
-
-        $post->addVoteMoins();
-
-        $existingVote = false;
-        foreach ($post->getVote() as $key => &$value) {
-            if($value->getUser() == $this->getUser() && $value->getPost()->getId() == $idPost){
-                $value->setVote(true);
-                $existingVote = true;
-            }
-        }
-
-        if(!$existingVote){
-            $vote = new Vote();
-            $vote->setUser($this->getUser());
-            $vote->setVote(true);
-            $vote->setPost($post);
-            $totalVotes[] = $post->getVote();
-            array_push($totalVotes,$vote);
-            $post->setVote($totalVotes);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($vote);
-            $em->flush();
-        }
-
-
-    }
-
-    public function addUnlikeAction($idPost, Request $request){
-        $post = $this->getDoctrine()
-            ->getRepository('AppBundle:Post')
-            ->findOneById($idPost);
-
-        $post->addVoteMoins();
-        $existingVote = false;
-        foreach ($post->getVote() as $key => &$value) {
-            if($value->getUser() == $this->getUser() && $value->getPost()->getId() == $idPost){
-                $value->setVote(false);
-                $existingVote = true;
-            }
-        }
-
-        if(!$existingVote){
-            $vote = new Vote();
-            $vote->setUser($this->getUser());
-            $vote->setVote(false);
-            $vote->setPost($post);
-            array_push($post->getVote(), $vote);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($vote);
-            $em->flush();
-        }
-    }
 
 
     public function getPostApiAction($idPost, Request $request)
