@@ -67,7 +67,8 @@ class PostController extends Controller
 
             $post->setImage($fileName);
             $post->setUser($this->getUser());
-
+            $post->setVoteMoins(0);
+            $post->setVotePlus(0);
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
             $em->flush();
